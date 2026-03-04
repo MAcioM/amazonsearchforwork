@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable
 
 sealed class IslandState {
 
-    data object Idle : IslandState()
+    object Idle : IslandState()
 
     data class Notification(
         val appName: String,
