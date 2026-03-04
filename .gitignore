@@ -1,0 +1,6 @@
+android/build/
+android/build.gradle
+android/settings.gradle
+android/gradle.properties
+android/gradle/
+*.keystore

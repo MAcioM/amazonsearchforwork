@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Search</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #222;  /* Dark background color */
+            color: #fff; /* White text color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff9900; /* Amazon orange color */
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #searchInput {
+            width: 400px;  /* Increased width */
+            padding: 10px;
+            font-size: 14px;
+            background-color: #333;  /* Dark grey background color */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 5px;
+        }
+
+        #checkboxContainer {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .checkbox {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        #searchBtn {
+            padding: 10px 20px;  /* Increased padding */
+            cursor: pointer;
+            background-color: #0073e6;  /* Dark blue color */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;  /* Increased font size */
+        }
+
+        #exampleSearch {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Amazon Search</h1>
+
+        <label for="searchInput">Search:</label>
+        <input type="text" id="searchInput" placeholder="Type your search">
+
+        <div id="checkboxContainer">
+            <label class="checkbox">
+                <input type="checkbox" id="usCheckbox"> Amazon US
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" id="ukCheckbox"> Amazon UK
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" id="deCheckbox"> Amazon DE
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" id="plCheckbox"> Amazon PL
+            </label>
+        </div>
+
+        <button id="searchBtn" onclick="searchAmazon()">Search</button>
+
+        <p id="exampleSearch">Example search: <strong>q=example&autosearch=true</strong></p>
+    </div>
+
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        window.onload = function () {
+            const searchText = getParameterByName('q');
+            if (searchText) {
+                document.getElementById('searchInput').value = searchText;
+
+                const autoSearch = getParameterByName('autosearch');
+                if (autoSearch && autoSearch.toLowerCase() === 'true') {
+                    // Automatically check all checkboxes
+                    document.getElementById('usCheckbox').checked = true;
+                    document.getElementById('ukCheckbox').checked = true;
+                    document.getElementById('deCheckbox').checked = true;
+                    document.getElementById('plCheckbox').checked = true;
+
+                    // Trigger the search function
+                    searchAmazon(true);  // Pass true to indicate autoSearch
+                }
+            }
+        };
+
+        function searchAmazon(autoSearch = false) {
+            const searchText = document.getElementById('searchInput').value;
+
+            const usCheckbox = document.getElementById('usCheckbox');
+            const ukCheckbox = document.getElementById('ukCheckbox');
+            const deCheckbox = document.getElementById('deCheckbox');
+            const plCheckbox = document.getElementById('plCheckbox');
+
+            const searchParam = `?k=${encodeURIComponent(searchText)}`;
+
+            if (usCheckbox.checked) {
+                const searchUrl = `https://www.amazon.com/s${searchParam}`;
+                if (autoSearch) {
+                    window.location.href = searchUrl;  // Redirect for autoSearch
+                } else {
+                    window.open(searchUrl, '_blank');  // Open in new window for manual search
+                }
+            }
+
+            if (ukCheckbox.checked) {
+                const searchUrl = `https://www.amazon.co.uk/s${searchParam}`;
+                window.open(searchUrl, '_blank');
+            }
+
+            if (deCheckbox.checked) {
+                const searchUrl = `https://www.amazon.de/s${searchParam}`;
+                window.open(searchUrl, '_blank');
+            }
+
+            if (plCheckbox.checked) {
+                const searchUrl = `https://www.amazon.pl/s${searchParam}`;
+                window.open(searchUrl, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
