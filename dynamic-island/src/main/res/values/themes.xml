@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DynamicIsland" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/settings_primary</item>
+        <item name="colorOnPrimary">@color/settings_on_primary</item>
+        <item name="android:windowBackground">@color/settings_background</item>
+        <item name="android:statusBarColor">@color/settings_background</item>
+        <item name="android:navigationBarColor">@color/settings_background</item>
+    </style>
+</resources>

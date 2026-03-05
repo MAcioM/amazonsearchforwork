@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dynamic Island</string>
+    <string name="app_version">1.0.0</string>
+    <string name="service_channel_name">Dynamic Island Service</string>
+    <string name="service_channel_description">Keeps the Dynamic Island overlay active</string>
+    <string name="service_notification_title">Dynamic Island is active</string>
+    <string name="service_notification_text">Tap to open settings</string>
+    <string name="enable_overlay">Enable Dynamic Island</string>
+    <string name="disable_overlay">Disable Dynamic Island</string>
+    <string name="grant_overlay_permission">Grant Overlay Permission</string>
+    <string name="grant_notification_permission">Grant Notification Access</string>
+    <string name="overlay_permission_granted">Overlay permission granted</string>
+    <string name="overlay_permission_needed">Overlay permission is required</string>
+    <string name="notification_permission_needed">Notification access is required</string>
+    <string name="settings_title">Dynamic Island Settings</string>
+    <string name="section_permissions">Permissions</string>
+    <string name="section_appearance">Appearance</string>
+    <string name="section_features">Features</string>
+    <string name="section_app_filter">App Filter</string>
+    <string name="island_size">Island Size</string>
+    <string name="island_color">Island Color</string>
+    <string name="animation_speed">Animation Speed</string>
+    <string name="notifications_enabled">Notifications</string>
+    <string name="music_enabled">Music Playback</string>
+    <string name="calls_enabled">Phone Calls</string>
+    <string name="timers_enabled">Timers</string>
+    <string name="size_small">Small</string>
+    <string name="size_medium">Medium</string>
+    <string name="size_large">Large</string>
+    <string name="color_black">Black</string>
+    <string name="color_dark_gray">Dark Gray</string>
+    <string name="color_accent">Accent</string>
+    <string name="speed_slow">Slow</string>
+    <string name="speed_normal">Normal</string>
+    <string name="speed_fast">Fast</string>
+    <string name="all_apps">All Apps</string>
+    <string name="selected_apps_only">Selected Apps Only</string>
+</resources>
