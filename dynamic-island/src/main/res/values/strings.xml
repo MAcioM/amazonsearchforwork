@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Dynamic Island</string>
+    <string name="app_version">1.0.0</string>
     <string name="service_channel_name">Dynamic Island Service</string>
     <string name="service_channel_description">Keeps the Dynamic Island overlay active</string>
     <string name="service_notification_title">Dynamic Island is active</string>
