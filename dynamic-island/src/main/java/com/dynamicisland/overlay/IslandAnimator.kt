@@ -3,7 +3,7 @@ package com.dynamicisland.overlay
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
-import android.view.animation.TimeInterpolator
+import android.animation.TimeInterpolator
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.exp
