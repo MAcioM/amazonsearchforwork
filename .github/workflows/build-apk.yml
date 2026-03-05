@@ -39,28 +39,10 @@ jobs:
           chmod +x gradlew
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee build-output.log
-        continue-on-error: true
-        id: build
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
 
-      - name: Upload build log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-log
-          path: build-output.log
-
-      - name: Upload debug APK
-        if: steps.build.outcome == 'success'
+      - name: Find and upload debug APK
         uses: actions/upload-artifact@v4
         with:
           name: dynamic-island-debug
-          path: dynamic-island/build/outputs/apk/debug/dynamic-island-debug.apk
-
-      - name: Fail if build failed
-        if: steps.build.outcome == 'failure'
-        run: |
-          echo "::group::Kotlin compilation errors"
-          grep -E "^e:|error:" build-output.log || echo "No specific errors found in log"
-          echo "::endgroup::"
-          exit 1
+          path: dynamic-island/build/outputs/apk/debug/*.apk
