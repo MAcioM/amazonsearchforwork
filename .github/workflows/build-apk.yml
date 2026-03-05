@@ -40,8 +40,11 @@ jobs:
 
       - name: Build debug APK
         run: ./gradlew assembleDebug --no-daemon --stacktrace
+        env:
+          GRADLE_OPTS: "-Xmx3072m -XX:MaxMetaspaceSize=512m"
 
-      - name: Find and upload debug APK
+      - name: Upload debug APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: dynamic-island-debug
